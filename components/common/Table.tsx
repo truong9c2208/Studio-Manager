@@ -85,7 +85,7 @@ export const Table = <T extends { id: string | number }>({ columns, data, onRowC
   return (
     <div className="overflow-x-auto">
       <table className="w-full text-left">
-        <thead className="bg-[#1B3C53]">
+        <thead className="bg-slate-500/20">
           <tr>
             {isSelectable && (
               <th className="px-4 py-3">

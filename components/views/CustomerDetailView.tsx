@@ -24,7 +24,7 @@ interface CustomerDetailViewProps {
 }
 
 const StatCard: React.FC<{ title: string, value: string, icon: React.ReactNode }> = ({ title, value, icon }) => (
-    <div className="bg-[#1B3C53] p-4 rounded-lg flex items-center space-x-3">
+    <div className="bg-slate-500/20 p-4 rounded-lg flex items-center space-x-3">
         <div className="p-2 bg-primary rounded-full">{icon}</div>
         <div>
             <p className="text-xs font-semibold text-[#F2F2F2] uppercase">{title}</p>

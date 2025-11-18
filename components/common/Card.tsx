@@ -11,7 +11,7 @@ export const Card: React.FC<CardProps> = ({ title, value, change, children }) =>
   const isMetricCard = !!value;
 
   return (
-    <div className="bg-[#1B3C53] p-6 rounded-lg shadow-md h-full flex flex-col">
+    <div className="bg-slate-500/20 p-6 rounded-lg shadow-md h-full flex flex-col">
       {title && (
         <div className={children && !isMetricCard ? "border-b border-primary pb-4 mb-4" : (isMetricCard ? "mb-2" : "")}>
           <h3 className="text-sm font-medium text-[#FFFFFF]">{title}</h3>

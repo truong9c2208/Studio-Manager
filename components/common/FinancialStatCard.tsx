@@ -15,7 +15,7 @@ export const FinancialStatCard: React.FC<FinancialStatCardProps> = ({ icon, titl
   const trendColor = isUp ? 'text-success' : 'text-danger';
 
   return (
-    <div className="bg-[#1B3C53] p-6 rounded-lg shadow-md flex items-center space-x-4">
+    <div className="bg-slate-500/20 p-6 rounded-lg shadow-md flex items-center space-x-4">
       <div className="flex-shrink-0 w-12 h-12 rounded-full bg-primary flex items-center justify-center">
         {icon}
       </div>

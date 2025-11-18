@@ -19,7 +19,7 @@ import { ChartBarIcon } from '../../icons/ChartBarIcon';
 import { FolderIcon } from '../../icons/FolderIcon';
 
 const StatCard: React.FC<{ title: string; value: string; icon: React.ReactNode }> = ({ title, value, icon }) => (
-    <div className="bg-[#1B3C53] p-4 rounded-lg shadow-md flex items-center space-x-4">
+    <div className="bg-slate-500/20 p-4 rounded-lg shadow-md flex items-center space-x-4">
         <div className="p-3 rounded-full bg-indigo-100 text-accent">{icon}</div>
         <div>
             <h3 className="text-sm font-medium text-[#F2F2F2] uppercase tracking-wider">{title}</h3>
@@ -110,7 +110,7 @@ export const ProductsView: React.FC<ProductsViewProps> = ({ products, categories
                         </section>
                         {isAdmin && (
                             <section>
-                                <div className="bg-[#1B3C53] p-4 rounded-lg border border-primary">
+                                <div className="bg-slate-500/20 p-4 rounded-lg border border-slate-600">
                                     <h3 className="text-lg font-semibold mb-2 text-[#F2F2F2]">AI Performance Summary</h3>
                                     {summary ? (
                                         <p className="text-[#F2F2F2] whitespace-pre-wrap">{summary}</p>
@@ -142,8 +142,8 @@ export const ProductsView: React.FC<ProductsViewProps> = ({ products, categories
                         <div className="flex-1 pl-6">
                             <div className="flex justify-between items-center mb-4">
                                 <div className="relative w-1/2">
-                                    <input type="search" placeholder="Search products..." value={searchTerm} onChange={e => setSearchTerm(e.target.value)} className="w-full p-2 pl-10 bg-primary border-secondary rounded-md" />
-                                    <SearchIcon className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-text-secondary" />
+                                    <input type="search" placeholder="Search products..." value={searchTerm} onChange={e => setSearchTerm(e.target.value)} className="w-full p-2 pl-10 bg-slate-500/20 border-secondary rounded-md" />
+                                    <SearchIcon className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-white" />
                                 </div>
                                 {isAdmin && (
                                     <div className="flex items-center space-x-2">

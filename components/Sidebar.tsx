@@ -31,7 +31,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ activeItem, onNavItemClick, is
   }, [isAdmin, t]);
 
   return (
-    <aside className="w-64 bg-[#234C6A] flex-shrink-0">
+    <aside className="w-64 bg-slate-800 flex-shrink-0">
       <div className="h-20 px-4 border-b border-primary">
         <button onClick={onLogoClick} className="w-full h-full flex items-center justify-center" aria-label="Go to dashboard">
           <Logo className="h-10" />
@@ -47,8 +47,8 @@ export const Sidebar: React.FC<SidebarProps> = ({ activeItem, onNavItemClick, is
                   w-full flex items-center p-3 my-1 rounded-lg transition-colors relative
                   ${
                     activeItem === item.id
-                      ? 'bg-[#1B3C53] text-white'
-                      : 'text-text-secondary hover:bg-[#1B3C53]'
+                      ? 'bg-slate-500/20 text-white'
+                      : 'text-text-secondary hover:bg-sky-100/30 hover:text-white'
                   }
                 `}
               >

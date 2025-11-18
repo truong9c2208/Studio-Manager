@@ -11,7 +11,7 @@ interface EmployeeCardProps {
 
 export const EmployeeCard: React.FC<EmployeeCardProps> = ({ employee, onEdit, onViewDetails }) => {
     return (
-        <div className="bg-[#1B3C53] p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow relative">
+        <div className="bg-slate-500/20 p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow relative">
             <div className="flex flex-col items-center text-center">
                 <img 
                     src={`https://i.pravatar.cc/80?u=${employee.id}`} 

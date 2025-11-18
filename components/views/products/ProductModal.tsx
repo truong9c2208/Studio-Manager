@@ -63,8 +63,8 @@ export const ProductModal: React.FC<ProductModalProps> = ({ isOpen, onClose, onS
                     <InputField label="SKU" name="sku" value={formData.sku} onChange={handleChange} required />
                 </div>
                 <div>
-                    <label htmlFor="description" className="block text-sm font-medium text-text-secondary">Description</label>
-                    <textarea id="description" name="description" value={formData.description} onChange={handleChange} required rows={4} className="w-full mt-1 p-2 bg-primary border border-secondary rounded-md" />
+                    <label htmlFor="description" className="block text-sm font-medium text-white">Description</label>
+                    <textarea id="description" name="description" value={formData.description} onChange={handleChange} required rows={4} className="w-full mt-1 p-2 bg-slate-700/50 text-white border border-slate-600 rounded-md" />
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                     <InputField label="Price" name="price" type="number" value={formData.price} onChange={handleChange} required />
@@ -75,7 +75,7 @@ export const ProductModal: React.FC<ProductModalProps> = ({ isOpen, onClose, onS
                     </SelectField>
                 </div>
                  <div>
-                    <label className="block text-sm font-medium text-text-secondary mb-1">Tags</label>
+                    <label className="block text-sm font-medium text-white mb-1">Tags</label>
                     <TagInput 
                         tags={formData.tags}
                         onTagsChange={(tags) => setFormData(p => ({...p, tags: tags}))}
@@ -95,15 +95,15 @@ export const ProductModal: React.FC<ProductModalProps> = ({ isOpen, onClose, onS
 
 const InputField: React.FC<any> = ({ label, name, ...props }) => (
     <div>
-        <label htmlFor={name} className="block text-sm font-medium text-text-secondary">{label}</label>
-        <input id={name} name={name} {...props} className="w-full mt-1 p-2 bg-primary border border-secondary rounded-md" />
+        <label htmlFor={name} className="block text-sm font-medium text-white">{label}</label>
+        <input id={name} name={name} {...props} className="w-full mt-1 p-2 bg-slate-700/50 text-white border border-slate-600 rounded-md" />
     </div>
 );
 
 const SelectField: React.FC<any> = ({ label, name, children, ...props }) => (
     <div>
-        <label htmlFor={name} className="block text-sm font-medium text-text-secondary">{label}</label>
-        <select id={name} name={name} {...props} className="w-full mt-1 p-2 bg-primary border border-secondary rounded-md">
+        <label htmlFor={name} className="block text-sm font-medium text-white">{label}</label>
+        <select id={name} name={name} {...props} className="w-full mt-1 p-2 bg-slate-700/50 text-white border border-slate-600 rounded-md">
             {children}
         </select>
     </div>

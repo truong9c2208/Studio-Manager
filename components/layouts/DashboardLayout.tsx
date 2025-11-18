@@ -6,12 +6,8 @@ import { ProjectsView } from '../views/ProjectsView';
 import { CustomersView } from '../views/CustomersView';
 import { EmployeesView } from '../views/EmployeesView';
 import { SimpleTableView } from '../views/SimpleTableView';
-import { CustomerDetailView } from '../views/CustomerDetailView';
-import { ProjectDetailView } from '../views/ProjectDetailView';
-import { EmployeeDetailView } from '../views/EmployeeDetailView';
 import { MyDayDashboardView } from '../views/staff/MyDayDashboardView';
 import { LicencesView } from '../views/LicencesView';
-import { DepartmentDetailView } from '../views/admin/DepartmentDetailView';
 import { NotificationsView } from '../views/NotificationsView';
 import { ProductsView } from '../views/products/ProductsView';
 import { WorkflowSidePanel } from '../workflow/WorkflowSidePanel';
@@ -19,7 +15,6 @@ import { mockProjects, mockInvoices, mockTickets, mockCustomers, mockNotificatio
 import type { Employee, Project, Invoice, Ticket, Customer, Notification, Department, Event, Licence, Product, ProductCategory, Plugin, GitRepository, LicenceActivity, RefundRequest, Goal, Workflow, Course, Task, LearningAssignment, TimeOffRequest } from '../../types';
 import * as api from '../../services/api';
 import { useTranslation } from '../../hooks/useTranslation';
-import { LogoutIcon } from '../icons/LogoutIcon';
 
 interface DashboardLayoutProps {
     loggedInUser: Employee;
@@ -203,7 +198,7 @@ export const DashboardLayout: React.FC<DashboardLayoutProps> = ({ loggedInUser, 
     }
 
     return (
-        <div className="flex h-screen bg-[#234C6A] text-text-primary font-sans">
+        <div className="flex h-screen bg-slate-800 text-text-primary font-sans">
             <Sidebar 
                 activeItem={activeView} 
                 onNavItemClick={handleNavItemClick} 

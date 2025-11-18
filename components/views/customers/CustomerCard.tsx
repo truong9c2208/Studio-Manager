@@ -16,7 +16,7 @@ interface CustomerCardProps {
 export const CustomerCard: React.FC<CustomerCardProps> = ({ customer, totalSpend, ticketCount, avgRating, onClick }) => {
     const { t } = useTranslation();
     return (
-        <div onClick={onClick} className="bg-[#1B3C53] p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow cursor-pointer border border-transparent hover:border-accent">
+        <div onClick={onClick} className="bg-slate-500/20 p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow cursor-pointer border border-transparent hover:border-accent">
             <div className="flex items-center space-x-4">
                 <img src={`https://i.pravatar.cc/64?u=${customer.id}`} alt={customer.name} className="w-16 h-16 rounded-full" />
                 <div>

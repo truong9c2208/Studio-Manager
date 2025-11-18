@@ -30,7 +30,7 @@ export const AuthLayout: React.FC<AuthLayoutProps> = ({ onLogin, onRegister }) =
   };
 
   return (
-    <div className="min-h-screen bg-[#234C6A] font-sans">
+    <div className="min-h-screen bg-slate-800 font-sans">
         <header className="absolute top-0 left-0 right-0 z-10 p-4">
             <div className="container mx-auto flex justify-between items-center">
                 <button onClick={() => setView('landing')} aria-label="Go to homepage" className={view === 'landing' ? 'text-slate-200' : 'text-text-primary'}>

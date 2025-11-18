@@ -49,9 +49,9 @@ export const CategorySidebar: React.FC<CategorySidebarProps> = ({ categories, se
 
 
   return (
-    <aside className="w-64 bg-secondary p-6 flex-shrink-0 flex flex-col">
+    <aside className="w-64 bg-slate-500/20 p-6 flex-shrink-0 flex flex-col">
       <div className="flex justify-between items-center mb-4">
-        <h2 className="text-xl font-bold">Categories</h2>
+        <h2 className="text-xl text-white font-bold">Categories</h2>
         {isAdmin && (
           <button onClick={handleAddNew} className="p-2 text-text-secondary hover:text-accent hover:bg-primary rounded-full">
               <PlusIcon className="w-5 h-5"/>
@@ -65,8 +65,8 @@ export const CategorySidebar: React.FC<CategorySidebarProps> = ({ categories, se
               onClick={() => onSelectCategory('all')}
               className={`w-full text-left p-3 my-1 rounded-lg transition-colors font-semibold ${
                 selectedCategoryId === 'all'
-                  ? 'bg-accent text-white'
-                  : 'text-text-secondary hover:bg-primary hover:text-text-primary'
+                  ? 'bg-slate-500/20 text-white'
+                  : 'text-white hover:bg-sky-100/30 hover:text-text-primary'
               }`}
             >
               All Products
@@ -93,8 +93,8 @@ export const CategorySidebar: React.FC<CategorySidebarProps> = ({ categories, se
                   onClick={() => onSelectCategory(category.id)}
                   className={`w-full text-left p-3 my-1 rounded-lg transition-colors font-semibold ${
                     selectedCategoryId === category.id
-                      ? 'bg-accent text-white'
-                      : 'text-text-secondary hover:bg-primary hover:text-text-primary'
+                      ? 'bg-slate-500/20 text-white'
+                      : 'text-white hover:bg-sky-100/30 hover:text-white'
                   }`}
                 >
                   {category.name}
@@ -102,7 +102,7 @@ export const CategorySidebar: React.FC<CategorySidebarProps> = ({ categories, se
               )}
               {isAdmin && (
                 <div className="absolute right-2 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity flex items-center bg-inherit">
-                   <button onClick={() => handleStartEdit(category)} className="p-1.5 hover:bg-slate-300 rounded-full"><PencilIcon className="w-4 h-4" /></button>
+                   <button onClick={() => handleStartEdit(category)} className="p-1.5 hover:bg-slate-300 text-gray-300 rounded-full"><PencilIcon className="w-4 h-4" /></button>
                    <button onClick={() => handleDelete(category)} className="p-1.5 hover:bg-slate-300 rounded-full text-danger"><TrashIcon className="w-4 h-4" /></button>
                 </div>
               )}

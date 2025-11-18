@@ -14,7 +14,7 @@ interface ProductCardProps {
 export const ProductCard: React.FC<ProductCardProps> = ({ product, category, onClick, isSelected, onCheckboxChange, isAdmin }) => {
   return (
     <div
-      className={`bg-secondary rounded-lg shadow-md hover:shadow-lg transition-all duration-200 flex flex-col overflow-hidden border-2 relative ${
+      className={`bg-slate-500/20 rounded-lg shadow-md hover:shadow-lg transition-all duration-200 flex flex-col overflow-hidden border-2 relative ${
         isSelected ? 'border-accent scale-105' : 'border-transparent'
       }`}
     >
@@ -24,7 +24,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, category, onC
             type="checkbox"
             checked={isSelected}
             onChange={(e) => onCheckboxChange(e.target.checked)}
-            className="h-5 w-5 text-accent border-gray-300 rounded focus:ring-accent"
+            className="h-5 w-5 text-white border-gray-300 rounded focus:ring-accent"
           />
         </div>
       )}
@@ -33,7 +33,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, category, onC
         <img src={product.image} alt={product.name} className="w-full h-40 object-cover" />
         <div className="p-4 flex flex-col flex-grow">
           <div className="flex-grow">
-            <h3 className="font-bold text-lg text-text-primary">{product.name}</h3>
+            <h3 className="font-bold text-lg text-slate-300">{product.name}</h3>
             <div className="mt-1">
               {product.stock === 0 ? (
                 <Badge text="Out of Stock" color="danger" size="sm" />
@@ -46,7 +46,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, category, onC
           </div>
           <div className="flex justify-between items-center mt-4">
             <Badge text={category?.name || 'Uncategorized'} color="info" size="sm" />
-            <span className="font-bold text-lg text-accent">${product.price.toFixed(2)}</span>
+            <span className="font-bold text-lg text-sky-500">${product.price.toFixed(2)}</span>
           </div>
         </div>
       </div>

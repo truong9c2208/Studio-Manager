@@ -21,7 +21,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project, employees, on
     ).filter((e): e is Employee => e !== undefined);
 
     return (
-        <div onClick={onClick} className="bg-[#1B3C53] p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow cursor-pointer flex flex-col justify-between">
+        <div onClick={onClick} className="bg-slate-500/20 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow cursor-pointer flex flex-col justify-between">
             <div>
                 <div className="flex justify-between items-start">
                     <div>

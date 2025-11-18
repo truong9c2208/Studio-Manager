@@ -214,10 +214,10 @@ export const ProjectDetailView: React.FC<ProjectDetailViewProps> = ({ projectId,
                 {activeTab === 'tasks' && (
                     <div className="space-y-4">
                         <div className="flex justify-between items-center">
-                            <div className="flex space-x-1 bg-[#1B3C53] p-1 rounded-lg">
-                                <button onClick={() => setActiveTaskTab('list')} className={`px-3 py-1 text-sm font-semibold rounded-md ${activeTaskTab === 'list' ? 'bg-[#1B3C53] text-[#FFFFFF] shadow-sm' : 'text-text-secondary'}`}>List</button>
-                                <button onClick={() => setActiveTaskTab('pert')} className={`px-3 py-1 text-sm font-semibold rounded-md ${activeTaskTab === 'pert' ? 'bg-[#1B3C53] text-[#FFFFFF] shadow-sm' : 'text-text-secondary'}`}>Timeline (PERT)</button>
-                                <button onClick={() => setActiveTaskTab('board')} className={`px-3 py-1 text-sm font-semibold rounded-md ${activeTaskTab === 'board' ? 'bg-[#1B3C53] text-[#FFFFFF] shadow-sm' : 'text-text-secondary'}`}>Board</button>
+                            <div className="flex space-x-1 bg-slate-500/20 p-1 rounded-lg">
+                                <button onClick={() => setActiveTaskTab('list')} className={`px-3 py-1 text-sm font-semibold rounded-md ${activeTaskTab === 'list' ? 'bg-slate-500/20 text-[#FFFFFF] shadow-sm' : 'text-text-secondary'}`}>List</button>
+                                <button onClick={() => setActiveTaskTab('pert')} className={`px-3 py-1 text-sm font-semibold rounded-md ${activeTaskTab === 'pert' ? 'bg-slate-500/20 text-[#FFFFFF] shadow-sm' : 'text-text-secondary'}`}>Timeline (PERT)</button>
+                                <button onClick={() => setActiveTaskTab('board')} className={`px-3 py-1 text-sm font-semibold rounded-md ${activeTaskTab === 'board' ? 'bg-slate-500/20 text-[#FFFFFF] shadow-sm' : 'text-text-secondary'}`}>Board</button>
                             </div>
                             <button onClick={() => setIsAddTaskModalOpen(true)} className="flex items-center space-x-2 bg-accent text-white px-4 py-2 rounded-md hover:bg-accent-hover">
                                 <PlusIcon className="w-5 h-5" />

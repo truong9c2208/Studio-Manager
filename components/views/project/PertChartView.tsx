@@ -99,7 +99,7 @@ export const PertChartView: React.FC<{ tasks: Task[]; criticalPath: string[]; on
     const containerWidth = 7 * DAY_WIDTH;
 
     return (
-        <div className="bg-[#1B3C53] rounded-lg border">
+        <div className="bg-slate-500/20 rounded-lg border">
             <div className="p-4 flex justify-between items-center border-b border-secondary">
                 <button onClick={handlePrev} className="p-1 rounded-md hover:bg-[#10b981] text-[#F2F2F2]"><ChevronLeftIcon className="w-5 h-5" /></button>
                 <div className="relative">

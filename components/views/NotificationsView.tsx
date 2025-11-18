@@ -29,10 +29,10 @@ export const NotificationsView: React.FC<NotificationsViewProps> = ({ notificati
         <div className="p-8">
             <Card>
                 <div className="flex justify-between items-center mb-4 -mt-2">
-                    <h1 className="text-2xl font-bold">Notifications</h1>
+                    <h1 className="text-2xl text-white font-bold">Notifications</h1>
                     <button 
                         onClick={onMarkAllAsRead}
-                        className="text-sm font-semibold text-accent hover:underline"
+                        className="text-sm font-semibold text-gray-300 hover:underline"
                     >
                         Mark all as read
                     </button>
@@ -42,22 +42,22 @@ export const NotificationsView: React.FC<NotificationsViewProps> = ({ notificati
                         <div 
                             key={notif.id}
                             className={`flex items-start space-x-4 p-4 rounded-lg transition-colors ${
-                                !notif.read ? 'bg-indigo-50' : 'bg-primary'
-                            } ${!notif.read ? 'cursor-pointer hover:bg-indigo-100' : ''}`}
+                                !notif.read ? 'bg-sky-800/50' : 'bg-slate-500/50'
+                            } ${!notif.read ? 'cursor-pointer hover:bg-sky-600/50' : ''}`}
                             onClick={() => !notif.read && onMarkAsRead(notif.id)}
                         >
-                            <div className={`relative flex-shrink-0 mt-1 ${notif.read ? 'text-text-secondary' : 'text-accent'}`}>
+                            <div className={`relative flex-shrink-0 mt-1 ${notif.read ? 'text-gray-400' : 'text-pink-400'}`}>
                                 <CheckCircleIcon className="w-6 h-6" />
                                 {!notif.read && (
                                     <span className="absolute -top-1 -right-1 flex h-3 w-3">
-                                        <span className="relative inline-flex rounded-full h-3 w-3 bg-accent"></span>
+                                        <span className="relative inline-flex rounded-full h-3 w-3 bg-pink-400"></span>
                                     </span>
                                 )}
                             </div>
                             <div className="flex-1">
-                                <h2 className="font-bold text-text-primary">{notif.title}</h2>
-                                <p className="text-sm text-text-secondary mt-1">{notif.message}</p>
-                                <p className="text-xs text-text-secondary mt-2">{timeSince(notif.timestamp)}</p>
+                                <h2 className="font-bold text-white">{notif.title}</h2>
+                                <p className="text-sm text-gray-300 mt-1">{notif.message}</p>
+                                <p className="text-xs text-gray-400 mt-2">{timeSince(notif.timestamp)}</p>
                             </div>
                         </div>
                     ))}

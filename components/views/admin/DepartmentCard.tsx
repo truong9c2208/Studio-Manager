@@ -16,7 +16,7 @@ interface DepartmentCardProps {
 
 export const DepartmentCard: React.FC<DepartmentCardProps> = ({ department, manager, members, onEdit, onDelete, onViewDetails }) => {
     return (
-        <div className="bg-[#1B3C53] p-4 rounded-lg shadow-md flex flex-col justify-between min-h-[160px] hover:shadow-lg transition-shadow">
+        <div className="bg-slate-500/20 p-4 rounded-lg shadow-md flex flex-col justify-between min-h-[160px] hover:shadow-lg transition-shadow">
             <div onClick={onViewDetails} className="cursor-pointer flex-grow">
                 <h3 className="text-lg font-bold text-[#F2F2F2]">{department.name}</h3>
                 <p className="text-sm text-[#F2F2F2] mt-1">

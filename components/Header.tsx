@@ -46,7 +46,7 @@ export const Header: React.FC<HeaderProps> = ({
   }, []);
 
   return (
-    <header className="flex justify-between items-center h-20 px-8 bg-[#234C6A] border-b border-primary">
+    <header className="flex justify-between items-center h-20 px-8 bg-slate-800 border-b border-primary">
       <h1 className="text-2xl font-bold text-[#FFFFFF]">{title}</h1>
       <div className="flex items-center space-x-4">
         {/* Admin User Switcher */}
@@ -72,7 +72,7 @@ export const Header: React.FC<HeaderProps> = ({
           <select
             value={locale}
             onChange={(e) => setLocale(e.target.value as Locale)}
-            className="pl-10 p-2 bg-[#234C6A] border border-secondary rounded-md text-[#F2F2F2] font-semibold appearance-none focus:ring-accent focus:border-accent"
+            className="pl-10 p-2 bg-slate-800 border border-slate-600 rounded-md text-[#F2F2F2] font-semibold appearance-none focus:ring-accent focus:border-accent"
           >
             <option value="en">English</option>
             <option value="vi">Tiếng Việt</option>
@@ -94,7 +94,7 @@ export const Header: React.FC<HeaderProps> = ({
 
         {/* User profile dropdown */}
         <div className="relative" ref={dropdownRef}>
-          <button onClick={() => setIsDropdownOpen(!isDropdownOpen)} className="flex items-center border border-secondary space-x-2 p-2 rounded-lg hover:bg-[#1B3C53] transition-colors">
+          <button onClick={() => setIsDropdownOpen(!isDropdownOpen)} className="flex items-center border border-slate-600 space-x-2 p-2 rounded-lg hover:bg-slate-500/20 transition-colors">
             <img
               src={`https://i.pravatar.cc/40?u=${loggedInUser.id}`}
               alt={loggedInUser.name}
@@ -107,17 +107,17 @@ export const Header: React.FC<HeaderProps> = ({
             <ChevronDownIcon className={`w-4 h-4 text-text-secondary transition-transform ${isDropdownOpen ? 'rotate-180' : ''}`} />
           </button>
           {isDropdownOpen && (
-            <div className="absolute right-0 mt-2 w-48 bg-[#234C6A] rounded-md shadow-lg z-10 border border-secondary">
+            <div className="absolute right-0 mt-2 w-48 bg-slate-800 rounded-md shadow-lg z-10 border border-slate-600">
               <div className="py-1">
                 <button
                   onClick={() => { onProfileClick(); setIsDropdownOpen(false); }}
-                  className="w-full text-left flex items-center px-4 py-2 text-sm text-[#F2F2F2] hover:bg-secondary"
+                  className="w-full text-left flex items-center px-4 py-2 text-sm text-[#F2F2F2] hover:bg-slate-700"
                 >
                   <UserCircleIcon className="w-5 h-5 mr-2" /> My Profile
                 </button>
                 <button
                   onClick={onLogout}
-                  className="w-full text-left flex items-center px-4 py-2 text-sm text-danger hover:bg-secondary"
+                  className="w-full text-left flex items-center px-4 py-2 text-sm text-danger hover:bg-slate-700"
                 >
                   <LogoutIcon className="w-5 h-5 mr-2" /> Logout
                 </button>

@@ -24,11 +24,11 @@ export const Modal: React.FC<ModalProps> = ({ isOpen, onClose, title, children, 
       onClick={onClose}
     >
       <div 
-        className={`bg-primary rounded-lg shadow-xl w-full m-4 ${sizeClasses[size]}`}
+        className={`bg-slate-800 border border-slate-600 rounded-lg shadow-xl w-full m-4 ${sizeClasses[size]}`}
         onClick={(e) => e.stopPropagation()} // Prevent closing when clicking inside modal
       >
         <div className="flex justify-between items-center p-4 border-b border-secondary">
-          <h2 className="text-xl font-semibold">{title}</h2>
+          <h2 className="text-xl font-semibold text-white">{title}</h2>
           <button onClick={onClose} className="text-text-secondary hover:text-text-primary">
             <CloseIcon className="w-6 h-6" />
           </button>
