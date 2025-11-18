@@ -53,7 +53,7 @@ export const en = {
     // Landing Page
     'landing_hero_title': 'COMPREHENSIVE SOLUTIONS',
     'landing_hero_subtitle': 'LEADING THE TREND',
-    'landing_hero_desc': 'Corelinks Studio provides comprehensive solutions for games and communities, helping you lead the trend and create groundbreaking experiences.',
+    'landing_hero_desc': 'MTP Studio provides comprehensive solutions for games and communities, helping you lead the trend and create groundbreaking experiences.',
     'landing_hero_cta': 'Get Started',
 
     'landing_game_service_title': 'GAME SERVICE',

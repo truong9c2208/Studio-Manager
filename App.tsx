@@ -14,7 +14,6 @@ export const App: React.FC = () => {
             const storedUser = localStorage.getItem('loggedInUser');
             if (storedUser) {
                 const parsedUser = JSON.parse(storedUser);
-                // Verify user exists in our mock data
                 if (employees.find(e => e.id === parsedUser.id)) {
                     setLoggedInUser(parsedUser);
                 }

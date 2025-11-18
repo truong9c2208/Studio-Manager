@@ -8,7 +8,7 @@ const ServiceDetailColumn: React.FC<{ titleKey: string, items: string[] }> = ({ 
     return (
         <div>
             <h4 className="font-bold text-sm uppercase tracking-wider text-blue-600 mb-4">{t(titleKey as any)}</h4>
-            <ul className="space-y-3 text-gray-600 text-sm">
+            <ul className="space-y-3 text-slate-200 text-md">
                 {items.map(itemKey => (
                     <li key={itemKey} className="flex items-start">
                         <svg className="w-4 h-4 mr-2 mt-0.5 text-blue-500 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M9 5l7 7-7 7" /></svg>
@@ -77,15 +77,15 @@ export const LandingPage: React.FC<{ onNavigate: (view: AuthView) => void; }> = 
         {/* Combined Services Section */}
         <section id="services-section" className="relative">
              {/* Game Service Details Section */}
-            <div className="py-24 bg-white text-gray-800">
+            <div className="py-24 bg-slate-800 text-gray-800">
                 <div className="max-w-7xl mx-auto flex px-8 lg:px-12 relative">
                     <div className="w-24 flex-shrink-0 relative hidden lg:block">
                         <div className="absolute top-0 left-12 h-full flex items-center">
-                            <h2 className="[writing-mode:vertical-rl] rotate-180 text-4xl font-black tracking-[0.3em] text-slate-100 uppercase select-none">CORELINKS STUDIO</h2>
+                            <h2 className="[writing-mode:vertical-rl] rotate-180 text-4xl font-black tracking-[0.3em] text-slate-700 uppercase select-none">MTP STUDIO</h2>
                         </div>
                     </div>
                     <div className="flex-grow lg:pl-12">
-                        <h2 className="text-3xl font-bold text-sky-500 mb-12">{t('gs_title')}</h2>
+                        <h2 className="text-3xl font-bold text-sky-400 mb-12">{t('gs_title')}</h2>
                         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-12">
                             <ServiceDetailColumn titleKey="gs_dev_title" items={['gs_dev_1', 'gs_dev_2', 'gs_dev_3', 'gs_dev_4']} />
                             <ServiceDetailColumn titleKey="gs_op_title" items={['gs_op_1', 'gs_op_2', 'gs_op_3', 'gs_op_4', 'gs_op_5', 'gs_op_6']} />
@@ -96,15 +96,15 @@ export const LandingPage: React.FC<{ onNavigate: (view: AuthView) => void; }> = 
             </div>
 
             {/* Community Service Details Section */}
-            <div className="py-24 bg-slate-50 text-gray-800">
+            <div className="py-24 bg-slate-50 bg-slate-800 text-gray-800">
                 <div className="max-w-7xl mx-auto flex px-8 lg:px-12 relative">
                     <div className="w-24 flex-shrink-0 relative hidden lg:block">
                         <div className="absolute top-0 left-12 h-full flex items-center">
-                            <h2 className="[writing-mode:vertical-rl] rotate-180 text-4xl font-black tracking-[0.3em] text-slate-200 uppercase select-none">CORELINKS STUDIO</h2>
+                            <h2 className="[writing-mode:vertical-rl] rotate-180 text-4xl font-black tracking-[0.3em] text-slate-700 uppercase select-none">MTP STUDIO</h2>
                         </div>
                     </div>
                     <div className="flex-grow lg:pl-12">
-                        <h2 className="text-3xl font-bold text-cyan-500 mb-12">{t('cs_title')}</h2>
+                        <h2 className="text-3xl font-bold text-cyan-400 mb-12">{t('cs_title')}</h2>
                         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-16">
                             <div className="space-y-16">
                                 <ServiceDetailColumn titleKey="cs_infra_title" items={['cs_infra_1', 'cs_infra_2', 'cs_infra_3', 'cs_infra_4']} />
@@ -125,7 +125,7 @@ export const LandingPage: React.FC<{ onNavigate: (view: AuthView) => void; }> = 
 
         {/* Footer */}
         <footer className="bg-slate-900 py-8 text-center text-text-secondary">
-            <p>&copy; {new Date().getFullYear()} Corelinks Studio. All rights reserved.</p>
+            <p>&copy; {new Date().getFullYear()} MTP Studio. All rights reserved.</p>
         </footer>
     </div>
   );

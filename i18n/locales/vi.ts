@@ -53,7 +53,7 @@ export const vi = {
     // Landing Page
     'landing_hero_title': 'GIẢI PHÁP TOÀN DIỆN',
     'landing_hero_subtitle': 'ĐÓN ĐẦU XU THẾ',
-    'landing_hero_desc': 'Corelinks Studio là nơi cung cấp các giải pháp toàn diện về game và cộng đồng, giúp bạn dẫn đầu xu hướng và tạo ra những trải nghiệm đột phá.',
+    'landing_hero_desc': 'MTP Studio là nơi cung cấp các giải pháp toàn diện về game và cộng đồng, giúp bạn dẫn đầu xu hướng và tạo ra những trải nghiệm đột phá.',
     'landing_hero_cta': 'Bắt đầu ngay',
 
     'landing_game_service_title': 'GAME SERVICE',
