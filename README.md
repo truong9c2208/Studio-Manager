@@ -1,20 +1,43 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
+# MTP Studio Manager
+
+> [!NOTE]
+> This resource belong to a studio i has contributed.
+
+> [!IMPORTANT]
+> This project was created for my major assignment. not for commercial purposes.
+
+<div style="text-align: center;">
+   <img src="./assets/banner.png" width="700" alt="Studio Manager Banner" />
 </div>
 
-# Run and deploy your AI Studio app
+---
 
-This contains everything you need to run your app locally.
+# Overview
 
-View your app in AI Studio: https://ai.studio/apps/drive/1kxvf5rmiu5O1yNnQDlSAfz6vcUB0Su4I
+MTP Studio Manager is a comprehensive application designed to streamline the management of studio operations. It offers a user-friendly interface for handling various tasks such as scheduling, client management, and resource allocation. With a focus on efficiency and organization, MTP Studio Manager aims to enhance productivity and improve overall studio workflow.
 
-## Run Locally
+# Features
+- User Authentication: Secure login and registration system.
+- Dashboard: Centralized view of all studio activities and metrics.
+- Client Management: Tools for managing client information and interactions.
+- Resource Allocation: Efficient management of studio resources and equipment.
+- Responsive Design: Optimized for both desktop and mobile devices.
 
-**Prerequisites:**  Node.js
+# Installation
+1. Clone the repository: `git clone https://github.com/truong9c2208/studio-manager.git`
+2. Navigate to the project directory: `cd studio-manager`
+3. Install dependencies: `npm install`
+4. Start the application: `npm start`
+5. Open your browser and go to `http://localhost:3000`
 
+# Usage
+1. Register for a new account or log in with existing credentials.
+2. Navigate through the dashboard to access different features.
+3. Use the client management tools to add, edit, or remove clients.
+4. Allocate resources as needed for studio operations.
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+# Contributing
+Contributions are welcome! Please fork the repository and submit a pull request with your changes.
+
+# License
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
