@@ -5,24 +5,15 @@ import { DashboardView } from '../views/DashboardView';
 import { ProjectsView } from '../views/ProjectsView';
 import { CustomersView } from '../views/CustomersView';
 import { EmployeesView } from '../views/EmployeesView';
-import { InvoicesView } from '../views/InvoicesView';
-import { TicketsView } from '../views/TicketsView';
 import { SimpleTableView } from '../views/SimpleTableView';
-import { ResourcesView } from '../views/ResourcesView';
 import { CustomerDetailView } from '../views/CustomerDetailView';
 import { ProjectDetailView } from '../views/ProjectDetailView';
 import { EmployeeDetailView } from '../views/EmployeeDetailView';
 import { MyDayDashboardView } from '../views/staff/MyDayDashboardView';
-import { EventsView } from '../views/EventsView';
 import { LicencesView } from '../views/LicencesView';
 import { DepartmentDetailView } from '../views/admin/DepartmentDetailView';
 import { NotificationsView } from '../views/NotificationsView';
-import { InvoiceDetailModal } from '../views/invoices/InvoiceDetailModal';
 import { ProductsView } from '../views/products/ProductsView';
-import { GoalsView } from '../views/staff/GoalsView';
-import { LearningView } from '../views/staff/LearningView';
-import { CourseDetailView } from '../views/learning/CourseDetailView';
-import { WorkflowsView } from '../views/staff/WorkflowsView';
 import { WorkflowSidePanel } from '../workflow/WorkflowSidePanel';
 import { mockProjects, mockInvoices, mockTickets, mockCustomers, mockNotifications, mockDepartments, mockEvents, mockLicences, mockProducts, mockProductCategories, mockPlugins, mockGitRepositories, mockLicenceActivity, mockRefundRequests, mockGoals, allAchievements, mockCourses, mockWorkflows } from '../../data/mockData';
 import type { Employee, Project, Invoice, Ticket, Customer, Notification, Department, Event, Licence, Product, ProductCategory, Plugin, GitRepository, LicenceActivity, RefundRequest, Goal, Workflow, Course, Task, LearningAssignment, TimeOffRequest } from '../../types';
@@ -172,61 +163,7 @@ export const DashboardLayout: React.FC<DashboardLayoutProps> = ({ loggedInUser, 
         setDetailView({ type: 'project', id: newProject.id });
     };
 
-    const renderDetailView = () => {
-        if (viewingCourse) {
-            return <CourseDetailView 
-                course={viewingCourse.course}
-                assignment={viewingCourse.assignment}
-                onBack={() => setViewingCourse(null)}
-                onUpdateAssignment={async (updatedAssignment) => {
-                    const updatedUser = {
-                        ...viewingAsUser,
-                        learningPaths: viewingAsUser.learningPaths.map(lp => lp.courseId === updatedAssignment.courseId ? updatedAssignment : lp)
-                    };
-                    await handleUpdateEmployee(updatedUser);
-                    setViewingCourse(prev => prev ? ({...prev, assignment: updatedAssignment}) : null);
-                }}
-            />;
-        }
-        if (!detailView) return null;
-        switch (detailView.type) {
-            case 'project':
-                return <ProjectDetailView projectId={detailView.id} onBack={() => setDetailView(null)} projects={projects} employees={allUsers} onUpdateProject={async(p) => { await api.updateProject(p); setProjects(await api.getProjects()); }} isAdmin={isAdmin} currentUser={viewingAsUser} />;
-            case 'customer':
-                return <CustomerDetailView customerId={detailView.id} onBack={() => setDetailView(null)} invoices={invoices} tickets={tickets} />;
-            case 'employee':
-                return <EmployeeDetailView employeeId={detailView.id} onBack={() => setDetailView(null)} projects={projects} employees={allUsers} tickets={tickets} departments={departments} courses={courses} isAdmin={isAdmin} allAchievements={allAchievements} />;
-            case 'my-profile':
-                return <EmployeeDetailView 
-                    employeeId={loggedInUser.id} 
-                    onBack={() => setDetailView(null)} 
-                    projects={projects} 
-                    employees={allUsers} 
-                    tickets={tickets} 
-                    departments={departments}
-                    courses={courses}
-                    isMyProfile 
-                    isAdmin={loggedInUser.systemRole === 'Admin'}
-                    allAchievements={allAchievements}
-                    onUpdateEmployee={handleUpdateEmployee}
-                    onUpdateSchedule={handleUpdateSchedule}
-                    onRequestWithdrawal={async (employeeId, amount, method) => { await api.requestWithdrawal(employeeId, amount, method); onUpdateEmployees(await api.getEmployees()); }}
-                    onRedeemReward={async (employeeId, rewardId, cost) => { await api.redeemReward(employeeId, rewardId, cost); onUpdateEmployees(await api.getEmployees()); }}
-                    onAddTransaction={async (employeeId, transaction) => { await api.addTransaction(employeeId, transaction); onUpdateEmployees(await api.getEmployees()); }}
-                    onAwardAchievement={async (employeeId, achievementId) => { await api.awardAchievement(employeeId, achievementId); onUpdateEmployees(await api.getEmployees()); }}
-                    onSaveTimeOffRequest={handleTimeOffRequest}
-                />;
-            case 'department':
-                 return <DepartmentDetailView departmentId={detailView.id} onBack={() => setDetailView(null)} departments={departments} employees={allUsers} projects={projects} onUpdateEmployee={handleUpdateEmployee} />;
-            case 'invoice':
-                return <InvoiceDetailModal isOpen={true} onClose={() => setDetailView(null)} invoiceId={detailView.id} invoices={invoices} tickets={tickets} currentUser={viewingAsUser} />;
-            default:
-                return null;
-        }
-    };
-
     const renderActiveView = () => {
-        if (detailView || viewingCourse) return renderDetailView();
         if (!isAdmin && (activeView === 'Dashboard' || activeView === 'My Day')) {
             return <MyDayDashboardView currentUser={viewingAsUser} projects={projects} tickets={tickets} onNavigate={handleNavItemClick} />
         }
@@ -239,14 +176,6 @@ export const DashboardLayout: React.FC<DashboardLayoutProps> = ({ loggedInUser, 
                 return <CustomersView onViewCustomer={(id) => setDetailView({ type: 'customer', id })} invoices={invoices} tickets={tickets} />;
             case 'Employees':
                 return <EmployeesView employees={allUsers} departments={departments} onViewEmployee={(id) => setDetailView({ type: 'employee', id })} onUpdateEmployees={onUpdateEmployees} onSaveDepartment={async(d) => { await api.saveDepartment(d); setDepartments(await api.getDepartments()); }} onDeleteDepartment={async(id) => { await api.deleteDepartment(id); setDepartments(await api.getDepartments()); }} onViewDepartment={(id) => setDetailView({ type: 'department', id })} onUpdateEmployee={handleUpdateEmployee}/>;
-            case 'Invoices':
-                return <InvoicesView invoices={invoices} tickets={tickets} onUpdateInvoice={async(i) => { await api.updateInvoice(i); setInvoices(await api.getInvoices()); }} onViewInvoice={(id) => setDetailView({ type: 'invoice', id })} currentUser={viewingAsUser} />;
-            case 'Tickets':
-                return <TicketsView tickets={tickets} employees={allUsers} customers={customers} projects={projects} invoices={invoices} products={products} licences={licences} events={events} refundRequests={refundRequests} onUpdateTicket={async(t) => { await api.updateTicket(t); setTickets(await api.getTickets()); }} onProcessPayment={async(ticketId, amount, type) => { await api.processPaymentForTicket(ticketId, amount, type); setTickets(await api.getTickets()); }} onAddNote={async(ticketId, note) => { await api.addNoteToTicket(ticketId, note, viewingAsUser.id); setTickets(await api.getTickets()); }} onAddRefundRequest={async(req) => { await api.addRefundRequest(req); setRefundRequests(await api.getRefundRequests()); setTickets(await api.getTickets()); }} onViewInvoice={(id) => setDetailView({ type: 'invoice', id })} currentUser={viewingAsUser} />;
-            case 'Resources':
-                return <ResourcesView plugins={plugins} gitRepositories={gitRepositories} employees={allUsers} currentUser={viewingAsUser} onSavePlugin={async(p) => { await api.savePlugin(p); setPlugins(await api.getPlugins()); }} onDeletePlugin={async(id) => { await api.deletePlugin(id); setPlugins(await api.getPlugins()); }} onAddPluginVersion={async(id, v) => { await api.addPluginVersion(id, v); setPlugins(await api.getPlugins()); }} onUpdatePluginWiki={async(id, pages) => { await api.updatePluginWiki(id, pages); setPlugins(await api.getPlugins()); }} onSaveRepo={async(r) => { await api.saveRepo(r); setGitRepositories(await api.getGitRepositories()); }} onDeleteRepo={async(id) => { await api.deleteRepo(id); setGitRepositories(await api.getGitRepositories()); }} onUpdateRepoWiki={async(id, pages) => { await api.updateRepoWiki(id, pages); setGitRepositories(await api.getGitRepositories()); }} onSaveIssue={async(id, issue) => { await api.saveIssue(id, issue); setGitRepositories(await api.getGitRepositories()); }} onSavePullRequest={async(id, pr) => { await api.savePullRequest(id, pr); setGitRepositories(await api.getGitRepositories()); }} onSaveRelease={async(id, rel) => { await api.saveRelease(id, rel); setGitRepositories(await api.getGitRepositories()); }} onUploadFileToRepo={async(repoId, branch, file) => { await api.uploadFileToRepo(repoId, branch, file); setGitRepositories(await api.getGitRepositories()); }} onRenameFileInRepo={async(repoId, branch, oldName, newName) => { await api.renameFileInRepo(repoId, branch, oldName, newName); setGitRepositories(await api.getGitRepositories()); }} onDeleteFileInRepo={async(repoId, branch, fileName) => { await api.deleteFileInRepo(repoId, branch, fileName); setGitRepositories(await api.getGitRepositories()); }} onCreateBranchInRepo={async(repoId, newBranch, fromBranch) => { await api.createBranchInRepo(repoId, newBranch, fromBranch); setGitRepositories(await api.getGitRepositories()); }} onRenameBranchInRepo={async(repoId, oldName, newName) => { await api.renameBranchInRepo(repoId, oldName, newName); setGitRepositories(await api.getGitRepositories()); }} onDeleteBranchInRepo={async(repoId, branchName) => { await api.deleteBranchInRepo(repoId, branchName); setGitRepositories(await api.getGitRepositories()); }} />;
-            case 'Events':
-                return <EventsView events={events} employees={allUsers} projects={projects} onSaveEvent={async(e) => { await api.saveEvent(e); setEvents(await api.getEvents()); }} onDeleteEvent={async(id) => { await api.deleteEvent(id); setEvents(await api.getEvents()); }} isAdmin={isAdmin} />;
             case 'Licences':
                 return <LicencesView licences={licences} customers={customers} products={products} employees={allUsers} tickets={tickets} licenceActivity={licenceActivity} onSaveLicence={async(l) => { await api.saveLicence(l); setLicences(await api.getLicences()); }} onDeleteLicence={async(id) => { await api.deleteLicence(id); setLicences(await api.getLicences()); }} onBulkUpdate={async(ids, status) => { await api.bulkUpdateLicenceStatus(ids, status); setLicences(await api.getLicences()); }} />;
             case 'Notifications':
@@ -254,12 +183,6 @@ export const DashboardLayout: React.FC<DashboardLayoutProps> = ({ loggedInUser, 
             case 'Products':
                 // FIX: Pass isAdmin prop to ProductsView.
                 return <ProductsView products={products} categories={productCategories} invoices={invoices} onSaveProduct={async(p) => { await api.saveProduct(p); setProducts(await api.getProducts()); }} onDeleteProducts={async(ids) => { await api.deleteProducts(ids); setProducts(await api.getProducts()); }} onSaveCategory={async(c) => { await api.saveProductCategory(c); setProductCategories(await api.getProductCategories()); }} onDeleteCategory={async(id) => { await api.deleteProductCategory(id); setProductCategories(await api.getProductCategories()); }} isAdmin={isAdmin} />;
-            case 'Goals':
-                return <GoalsView goals={goals} employees={allUsers} departments={departments} onUpdateGoal={handleUpdateGoal} currentUser={viewingAsUser} isAdmin={isAdmin} />;
-            case 'Learning':
-                return <LearningView currentUser={viewingAsUser} allEmployees={allUsers} courses={courses} isAdmin={isAdmin} onSaveCourse={async(c) => { await api.saveCourse(c); setCourses(await api.getCourses()); }} onDeleteCourse={async(id) => { await api.deleteCourse(id); setCourses(await api.getCourses()); }} onSaveEmployee={handleUpdateEmployee} onViewCourse={setViewingCourse} />;
-            case 'Workflows':
-                return <WorkflowsView workflows={workflows} onStartWorkflow={handleStartWorkflow} isAdmin={isAdmin} onSaveWorkflow={async(w) => { await api.saveWorkflow(w); setWorkflows(await api.getWorkflows()); }} onDeleteWorkflow={async(id) => { await api.deleteWorkflow(id); setWorkflows(await api.getWorkflows()); }} />;
             default:
                 return <SimpleTableView title={activeView} />;
         }
